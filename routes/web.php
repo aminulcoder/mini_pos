@@ -3,7 +3,8 @@
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserGroupController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProductsController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,5 @@ Route::group(['prefix'=>'groups','as'=>'group.'], function(){
 });
 Route::resource('users', UserController::class);
 Route::resource('categories', CategoriesController::class);
+Route::resource('products', ProductsController::class);
 

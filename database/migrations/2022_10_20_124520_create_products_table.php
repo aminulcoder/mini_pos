@@ -20,7 +20,7 @@ return new class extends Migration
             $table->double('cost_price')->nullable();
             $table->double('price')->nullable();
             $table->foreignId('category_id');
-            $table->string('unit');
+            $table->string('unit')->nullable();
             $table->timestamps();
         });
     }
