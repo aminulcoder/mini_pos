@@ -18,8 +18,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-       $this->data['products']= Product::all();
-       return view('products.product', $this->data);
+        $this->data['products'] = Product::all();
+
+        return view('products.product', $this->data);
     }
 
     /**
@@ -118,6 +119,6 @@ class ProductsController extends Controller
             Session::flash('message', 'Product Deleted Successfully');
         }
 
-        return redirect()->to('products');   
+        return redirect()->to('products');
     }
 }
