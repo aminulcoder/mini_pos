@@ -5,7 +5,10 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserGroupController;
 use App\Http\Controllers\ProductsController;
-
+use App\Http\Controllers\UserPaymentsController;
+use App\Http\Controllers\UserPurchasesController;
+use App\Http\Controllers\UserReceiptsController;
+use App\Http\Controllers\UsersalesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +42,10 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('users', UserController::class);
+    Route::get('users/{id}/sales',[UsersalesController::class,'index'])->name('user.sales');
+    Route::get('users/{id}/purchases',[UserPurchasesController::class,'index'])->name('user.purchases');
+    Route::get('users/{id}/payments',[UserPaymentsController::class,'index'])->name('user.payments');
+    Route::get('users/{id}/receipts',[UserReceiptsController::class,'index'])->name('user.receipts');
     Route::resource('categories', CategoriesController::class);
     Route::resource('products', ProductsController::class);
 

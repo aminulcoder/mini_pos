@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone', 15)->nullable();
             $table->string('address',200)->nullable();
             $table->foreignId('group_id');
-            $table->foreignId('admin_id');
+            $table->foreignId('admin_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
