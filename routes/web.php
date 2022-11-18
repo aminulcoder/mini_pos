@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
         return view('welcome');
     });
 
-    Route::get('logout',[LoginController::class,'logout'])->name('logout');
+    Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => 'groups', 'as' => 'group.'], function () {
 
@@ -42,17 +42,15 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::resource('users', UserController::class);
-    Route::get('users/{id}/sales',[UsersalesController::class,'index'])->name('user.sales');
-    Route::get('users/{id}/purchases',[UserPurchasesController::class,'index'])->name('user.purchases');
-    Route::get('users/{id}/payments',[UserPaymentsController::class,'index'])->name('user.payments');
-    Route::get('users/{id}/receipts',[UserReceiptsController::class,'index'])->name('user.receipts');
+    Route::get('users/{id}/sales', [UsersalesController::class, 'index'])->name('user.sales');
+    Route::get('users/{id}/purchases', [UserPurchasesController::class, 'index'])->name('user.purchases');
+
+    Route::get('users/{id}/payments', [UserPaymentsController::class, 'index'])->name('user.payments');
+    Route::post('users/{id}/payments', [UserPaymentsController::class, 'store'])->name('user.payments.store');
+    Route::delete('users/{id}/payments/{payment_id}',[UserPaymentsController::class, 'destroy'])->name('user.payments.destroy');
+
+
+    Route::get('users/{id}/receipts', [UserReceiptsController::class, 'index'])->name('user.receipts');
     Route::resource('categories', CategoriesController::class);
     Route::resource('products', ProductsController::class);
-
-
 });
-
-
-
-
-
